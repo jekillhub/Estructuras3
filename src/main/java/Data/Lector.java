@@ -15,7 +15,7 @@ import java.util.ArrayList;
  */
 public class Lector {
     
-    public ArrayList<Vino> read() throws FileNotFoundException{
+    public static ArrayList<Vino> read() throws FileNotFoundException{
         String title;
         String country;
         String description;
@@ -33,10 +33,16 @@ public class Lector {
             int first=1;
             while ((line = br.readLine()) != null) {
                 String[] auxVino = line.split(datSplitBy);
-                title = auxVino[11].replace("NULL", "Unknown");
-                country = auxVino[1].replace("NULL", "Unknown");
-                description = auxVino[2].replace("NULL", "Unknown");
-                price = auxVino[5].replace("NULL", "0.0");
+
+                for(int i=0;i<auxVino.length;i++){
+                    System.out.println(auxVino[i]);
+                }
+
+                title = auxVino[11].replace("", "Unknown");
+                country = auxVino[1].replace("", "Unknown");
+                description = auxVino[2].replace("", "Unknown");
+                price = auxVino[5].replace("", "0.0");
+
                 if (!(first==1)){
                     vino = new Vino(title, country, description, Double.parseDouble(price));
                     cava.add(vino);
@@ -58,6 +64,13 @@ public class Lector {
         }
         
         return cava;
+    }
+
+    public static void main(String[] args) throws FileNotFoundException {
+        ArrayList<Vino> vinos = read();
+        for (int i=0;i<vinos.size();i++){
+            System.out.println(vinos.get(i).getTitle());
+        }
     }
     
 }

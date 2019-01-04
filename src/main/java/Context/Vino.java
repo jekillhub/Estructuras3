@@ -10,14 +10,20 @@ package Context;
  * @author Sebastian
  */
 public class Vino {
+    private String title;
     private String country;
     private String description;
     private double price;
     
-    public Vino(String country, String description, double price){
+    public Vino(String title, String country, String description, double price){
+        this.title = title;
         this.country = country;
         this.description = description;
         this.price = price;
+    }
+    
+    public String getTitle(){
+        return this.title;
     }
     
     public String getCountry(){

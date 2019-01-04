@@ -26,7 +26,7 @@ public class Lector {
         String path = "datos-vino.csv";
         BufferedReader br = null;
         String line = "";
-        String datSplitBy = ",";
+        String datSplitBy = ",(?=([^\"]*\"[^\"]*\")*[^\"]*$)";
         
         try {
             br = new BufferedReader(new FileReader(path));
@@ -41,7 +41,7 @@ public class Lector {
                 title = auxVino[11].replace("", "Unknown");
                 country = auxVino[1].replace("", "Unknown");
                 description = auxVino[2].replace("", "Unknown");
-                price = auxVino[5].replace("", "0.0");
+                price = auxVino[5].replace("", "0");
 
                 if (!(first==1)){
                     vino = new Vino(title, country, description, Double.parseDouble(price));

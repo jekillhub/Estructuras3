@@ -27,22 +27,28 @@ public class Lector {
         BufferedReader br = null;
         String line = "";
         String datSplitBy = ",(?=([^\"]*\"[^\"]*\")*[^\"]*$)";
-        
+        String empty = "";
         try {
             br = new BufferedReader(new FileReader(path));
             int first=1;
             while ((line = br.readLine()) != null) {
                 String[] auxVino = line.split(datSplitBy);
-
-                for(int i=0;i<auxVino.length;i++){
-                    System.out.println(auxVino[i]);
+                title = auxVino[11];
+                if (title.equals(empty)){
+                    title = "Unknown";
                 }
-
-                title = auxVino[11].replace("", "Unknown");
-                country = auxVino[1].replace("", "Unknown");
-                description = auxVino[2].replace("", "Unknown");
-                price = auxVino[5].replace("", "0");
-
+                country = auxVino[1];
+                if (country.equals(empty)){
+                    country = "Unknown";
+                }
+                description = auxVino[2];
+                if (description.equals(empty)){
+                    description = "Unknown";
+                }
+                price = auxVino[5];
+                if (price.equals(empty)){
+                    price = "0";
+                }
                 if (!(first==1)){
                     vino = new Vino(title, country, description, Double.parseDouble(price));
                     cava.add(vino);

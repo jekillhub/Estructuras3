@@ -71,12 +71,4 @@ public class Lector {
         
         return cava;
     }
-
-    public static void main(String[] args) throws FileNotFoundException {
-        ArrayList<Vino> vinos = read();
-        for (int i=0;i<vinos.size();i++){
-            System.out.println(vinos.get(i).getTitle());
-        }
-    }
-    
 }

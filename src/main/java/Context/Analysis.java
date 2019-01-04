@@ -22,7 +22,7 @@ public class Analysis {
         ArrayList<String> paises = new ArrayList<String>();
 
         for (int i=0; i<mayores.size(); i++){
-            paises.add(mayores.get(i));
+            paises.add(mayores.get(i).getCountry());
         }
         return paises;
     }
